@@ -26,7 +26,7 @@ public class DecrementOddTest {
     public void secondTest() {
         // given
         Integer[] input =    {10,20,30,1,3,5};
-        Integer[] expected = {10,20,30,0,2,4};;
+        Integer[] expected = {10,20,30,0,2,4};
 
         // when
         Integer[] actual = IntegerArrayUtils.decrementOdd(input);

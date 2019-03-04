@@ -1,5 +1,8 @@
 package rocks.zipcode.assessment2.fundamentals;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author leon on 28/11/2018.
  */
@@ -28,7 +31,12 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        StringBuilder repeater = new StringBuilder();
+        for (int i = 0; i < numberOfTimeToRepeat ; i++) {
+            repeater.append(stringToBeRepeated);
+        }
+        return repeater.toString();
+
     }
 
     /**
@@ -36,7 +44,8 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+
+        return string.replaceAll("\\s+", "").matches("[a-zA-Z]+");
     }
 
     /**
@@ -44,7 +53,7 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        return string.chars().allMatch(c -> c >= 48 && c <= 57);
     }
 
     /**
@@ -52,6 +61,8 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(string);
+        return (m.find() && isAlphaString(string));
     }
 }

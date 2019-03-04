@@ -1,5 +1,9 @@
 package rocks.zipcode.assessment2.collections;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
 /**
  * Use a map to solve
  */
@@ -8,8 +12,15 @@ public class MonthConversion {
      * @param monthNumber - ordinal of month in the year; i.e. January = 1, February = 2
      * @param monthName - name of month
      */
-    public void add(Integer monthNumber, String monthName) {
 
+    private Map<Integer, String> calendar;
+
+    public MonthConversion() {
+        this.calendar = new TreeMap<>();
+    }
+
+    public void add(Integer monthNumber, String monthName) {
+        this.calendar.put(monthNumber, monthName);
     }
 
     /**
@@ -17,7 +28,7 @@ public class MonthConversion {
      * @return the name of the respective month
      */
     public String getName(Integer monthNumber) {
-        throw new NullPointerException();
+        return calendar.get(monthNumber);
     }
 
     /**
@@ -25,7 +36,14 @@ public class MonthConversion {
      * @return - the ordinal of the month in the year
      */
     public int getNumber(String monthName) {
-        return (Integer)null;
+        Set<Map.Entry<Integer, String>> entries = this.calendar.entrySet();
+        Integer month = null;
+        for(Map.Entry<Integer, String> entry : entries) {
+            if(entry.getValue().equals(monthName)) {
+                month = entry.getKey();
+            }
+        }
+        return (Integer) month;
     }
 
     /**
@@ -33,7 +51,14 @@ public class MonthConversion {
      * @return true if the monthNumber is in the keySet
      */
     public Boolean isValidNumber(Integer monthNumber) {
-        return null;
+        Set<Map.Entry<Integer, String>> entries = this.calendar.entrySet();
+
+        for(Map.Entry<Integer, String> entry : entries) {
+            if(entry.getKey().equals(monthNumber)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -41,14 +66,21 @@ public class MonthConversion {
      * @return true if the monthName is in the valueSet
      */
     public Boolean isValidMonth(String monthName) {
-        return null;
+        Set<Map.Entry<Integer, String>> entries = this.calendar.entrySet();
+
+        for(Map.Entry<Integer, String> entry : entries) {
+            if(entry.getValue().equals(monthName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * @return number of entries in this mapping
      */
     public Integer size() {
-        return -1;
+        return this.calendar.size();
     }
 
     /**
@@ -56,6 +88,6 @@ public class MonthConversion {
      * @param monthName - name of month
      */
     public void update(Integer monthNumber, String monthName) {
-
+        this.calendar.put(monthNumber, monthName);
     }
 }
