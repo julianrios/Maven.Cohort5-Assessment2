@@ -35,7 +35,16 @@ public class BasicStringUtils {
      * @return `string` with `charactersToRemove` removed
      */
     public static String removeCharacters(String string, String charactersToRemove) {
-        return string.replace(charactersToRemove, "");
+        String regexPattern = getRegex(charactersToRemove);
+        return string.replaceAll(regexPattern, "");
+    }
+
+    private static String getRegex(String charactersToRemove) {
+        StringBuilder regex = new StringBuilder();
+        regex.append("[");
+        regex.append(charactersToRemove);
+        regex.append("]");
+        return regex.toString();
     }
 
     /**

@@ -61,8 +61,9 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("[!&*(]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(string);
-        return (m.find() && isAlphaString(string));
+//        if(string.matches([]))
+        return m.find();
     }
 }

@@ -2,7 +2,6 @@ package rocks.zipcode.assessment2.generics;
 
 
 import java.util.*;
-import java.util.function.Consumer;
 
 /**
  * Shelter is a generic class that holds Objects that extends `Ageable`.
