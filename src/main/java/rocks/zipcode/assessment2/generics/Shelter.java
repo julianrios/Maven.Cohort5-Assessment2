@@ -1,6 +1,9 @@
 package rocks.zipcode.assessment2.generics;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Shelter is a generic class that holds Objects that extends `Ageable`.
  * For example, if a Person and a Dog extends Ageable, then I can declare the following:
@@ -9,32 +12,36 @@ package rocks.zipcode.assessment2.generics;
  * Shelter<Dog> dogHouse = new Shelter<Dog>();
  */
 public class Shelter<_> {
+    private List housing;
+
     public Shelter() {
-        throw new NullPointerException();
+        housing = this.housing = new ArrayList();;
     }
 
     /**
      * @return the number of item in the shelter
      */
     public int size() {
-        return -1;
+        return this.housing.size();
     }
 
     public void add(Object object) {
+        this.housing.add(object);
     }
 
     public Boolean contains(Object object) {
-        return null;
+        return this.housing.contains(object);
     }
 
     public void remove(Object object) {
+        this.housing.remove(object);
     }
 
     public Object get(Integer index) {
-        return null;
+        return this.housing.get(index);
     }
 
     public Integer getIndexOf(Object ageable) {
-        return 0;
+        return this.housing.indexOf(ageable);
     }
 }
