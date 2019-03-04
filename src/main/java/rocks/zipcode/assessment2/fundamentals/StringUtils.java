@@ -47,8 +47,7 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-
-        return string.replaceAll("\\s+", "").matches("[a-zA-Z]+");
+        return string.matches("[a-zA-Z\\s]+");
     }
 
     /**
@@ -56,7 +55,7 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return string.chars().allMatch(c -> c >= 48 && c <= 57);
+        return string.matches("[0-9]+");
     }
 
     /**
@@ -64,8 +63,6 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        Pattern p = Pattern.compile("[!&*(]", Pattern.CASE_INSENSITIVE);
-        Matcher m = p.matcher(string);
-        return m.find();
+        return string.matches("[^a-zA-Z0-9\\s]+");
     }
 }
