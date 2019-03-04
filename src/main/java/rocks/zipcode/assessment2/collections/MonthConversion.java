@@ -35,7 +35,7 @@ public class MonthConversion {
      * @param monthName - name of month
      * @return - the ordinal of the month in the year
      */
-    public int getNumber(String monthName) {
+    public Integer getNumber(String monthName) {
         Set<Map.Entry<Integer, String>> entries = this.calendar.entrySet();
         Integer month = null;
         for(Map.Entry<Integer, String> entry : entries) {
@@ -43,7 +43,7 @@ public class MonthConversion {
                 month = entry.getKey();
             }
         }
-        return (Integer) month;
+        return month;
     }
 
     /**

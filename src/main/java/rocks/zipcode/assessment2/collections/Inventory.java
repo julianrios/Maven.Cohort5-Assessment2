@@ -8,18 +8,21 @@ import java.util.List;
  */
 public class Inventory {
    private List<String> strings = new ArrayList<>();
+    private int numberInStock;
+
     /**
      * @param strings list of strings to add / remove / fetch from
      */
     public Inventory(List<String> strings) {
-        this.strings = new ArrayList<>();
+        this.strings = strings;
+        this.numberInStock = 0;
     }
 
     /**
      * nullary constructor initializes a new list
      */
     public Inventory() {
-
+        this.strings = new ArrayList<>();
     }
 
     /**
@@ -27,6 +30,7 @@ public class Inventory {
      */
     public void addItemToInventory(String item) {
         strings.add(item);
+        this.numberInStock++;
     }
 
     /**
@@ -34,6 +38,7 @@ public class Inventory {
      */
     public void removeItemFromInventory(String item) {
         strings.remove(item);
+        this.numberInStock--;
     }
 
     /**
@@ -41,10 +46,12 @@ public class Inventory {
      * @return - return the number of items
      */
     public Integer getItemQuantity(String item) {
-        int numberInStock = -1;
-        for(String thing : strings) {
+        int numberInStock = 0;
+        for(String thing : this.strings) {
             if(thing.equals(item)) {
-                numberInStock ++;
+                numberInStock++;
+            } else {
+                numberInStock = 0;
             }
         }
         return numberInStock;
