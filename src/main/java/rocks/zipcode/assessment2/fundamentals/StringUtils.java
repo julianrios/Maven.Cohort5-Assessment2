@@ -13,7 +13,8 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
+        String formatted = String.format("%" + amountOfPadding+"s", stringToBePadded);
+        return formatted;
     }
 
     /**
@@ -22,7 +23,9 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+        amountOfPadding *= -1;
+        String formatted = String.format("%" + amountOfPadding+"s", stringToBePadded);
+        return formatted;
     }
 
     /**
@@ -63,7 +66,6 @@ public class StringUtils {
     public static Boolean isSpecialCharacterString(String string) {
         Pattern p = Pattern.compile("[!&*(]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(string);
-//        if(string.matches([]))
         return m.find();
     }
 }
