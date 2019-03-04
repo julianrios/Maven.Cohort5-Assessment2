@@ -1,8 +1,8 @@
 package rocks.zipcode.assessment2.generics;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * Shelter is a generic class that holds Objects that extends `Ageable`.
@@ -11,11 +11,11 @@ import java.util.List;
  * Shelter<Person> farmHouse = new Shelter<Person>();
  * Shelter<Dog> dogHouse = new Shelter<Dog>();
  */
-public class Shelter<_> {
+public class Shelter<_> implements Iterable<_> {
     private List housing;
 
     public Shelter() {
-        housing = this.housing = new ArrayList();;
+        this.housing = new ArrayList();
     }
 
     /**
@@ -43,5 +43,10 @@ public class Shelter<_> {
 
     public Integer getIndexOf(Object ageable) {
         return this.housing.indexOf(ageable);
+    }
+
+    @Override
+    public Iterator<_> iterator() {
+        return null;
     }
 }
