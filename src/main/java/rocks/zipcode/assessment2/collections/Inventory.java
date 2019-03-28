@@ -1,44 +1,55 @@
 package rocks.zipcode.assessment2.collections;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Use a map to keep track of inventory in a store
  */
 public class Inventory {
-   private List<String> strings = new ArrayList<>();
-    private int numberInStock;
+    private Map<String, Integer> inventory;
 
     /**
-     * @param strings list of strings to add / remove / fetch from
+     * @param list list of inventory to add / remove / fetch from
      */
-    public Inventory(List<String> strings) {
-        this.strings = strings;
-        this.numberInStock = 0;
+    public Inventory(List<String> list) {
+        this.inventory = new TreeMap<>();
+        initializeInventory(list);
     }
 
     /**
      * nullary constructor initializes a new list
      */
     public Inventory() {
-        this.strings = new ArrayList<>();
+        this.inventory = new TreeMap<>();
     }
+
+    private void initializeInventory(List<String> list) {
+        for(String item : list) {
+            inventory.put(item, 0);
+        }
+    }
+
 
     /**
      * @param item - increment the number of this item in stock by 1
      */
     public void addItemToInventory(String item) {
-        strings.add(item);
-        this.numberInStock++;
+        if(inventory.containsKey(item)) {
+            inventory.put(item, inventory.get(item) + 1);
+        } else {
+            inventory.put(item, 1);
+        }
     }
 
     /**
      * @param item - decrement the number of this item in stock by 1
      */
     public void removeItemFromInventory(String item) {
-        strings.remove(item);
-        this.numberInStock--;
+        inventory.put(item, inventory.get(item) -1);
     }
 
     /**
@@ -46,14 +57,9 @@ public class Inventory {
      * @return - return the number of items
      */
     public Integer getItemQuantity(String item) {
-        int numberInStock = 0;
-        for(String thing : this.strings) {
-            if(thing.equals(item)) {
-                numberInStock++;
-            } else {
-                numberInStock = 0;
-            }
+        if(inventory.containsKey(item)) {
+            return inventory.get(item);
         }
-        return numberInStock;
+        return 0;
     }
 }

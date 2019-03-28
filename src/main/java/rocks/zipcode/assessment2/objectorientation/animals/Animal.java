@@ -44,4 +44,6 @@ public class Animal {
     public Address getAddress() {
         return owner.getAddress();
     }
+
+
 }

@@ -44,6 +44,7 @@ public class BasicStringUtils {
         regex.append("[");
         regex.append(charactersToRemove);
         regex.append("]");
+        System.out.println(charactersToRemove);
         return regex.toString();
     }
 

@@ -23,8 +23,7 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        amountOfPadding *= -1;
-        String formatted = String.format("%" + amountOfPadding+"s", stringToBePadded);
+        String formatted = String.format("%-" + amountOfPadding+"s", stringToBePadded);
         return formatted;
     }
 
